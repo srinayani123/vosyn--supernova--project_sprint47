@@ -1,0 +1,76 @@
+{
+  "tokenizer": {
+    "glm": {
+      "model": "zai-org/GLM-4-9B-0414",
+      "fertility_yue": 1.5,
+      "fertility_cmn": 0.614,
+      "yue_vs_cmn_ratio": 2.443,
+      "multi_token_particles": {
+        "嘅": 2,
+        "喺": 2,
+        "咗": 2,
+        "冇": 2,
+        "啲": 2,
+        "嗰": 2,
+        "咁": 2,
+        "哋": 2,
+        "嚟": 2,
+        "俾": 2,
+        "睇": 2,
+        "諗": 2,
+        "搵": 2,
+        "㗎": 3,
+        "喎": 2,
+        "囉": 2,
+        "啫": 2,
+        "嘞": 2,
+        "咩": 2
+      }
+    },
+    "qwen": {
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "fertility_yue": 1.385,
+      "fertility_cmn": 0.643,
+      "yue_vs_cmn_ratio": 2.154,
+      "multi_token_particles": {
+        "嘅": 2,
+        "喺": 2,
+        "咗": 2,
+        "冇": 2,
+        "啲": 2,
+        "嗰": 2,
+        "咁": 2,
+        "哋": 2,
+        "嚟": 2,
+        "諗": 2,
+        "搵": 2,
+        "㗎": 3,
+        "喎": 2,
+        "囉": 2
+      }
+    }
+  },
+  "qlora": {
+    "status": "PASS",
+    "target_modules": [
+      "down_proj",
+      "gate_up_proj",
+      "k_proj",
+      "o_proj",
+      "q_proj",
+      "v_proj"
+    ],
+    "trainable_params": 47595520,
+    "one_step_loss": 3.9233,
+    "peak_vram_gb": 10.43
+  },
+  "multi_lora": {
+    "status": "PASS",
+    "adapters_loaded": [
+      "default",
+      "yue_dialect"
+    ],
+    "hot_swap": "default -> yue_dialect -> default OK",
+    "serving_plan": "one GLM base + per-dialect LoRA adapters; verify vLLM enable_lora on the deployment GPU"
+  }
+}

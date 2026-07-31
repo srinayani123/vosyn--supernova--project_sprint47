@@ -1,0 +1,61 @@
+{
+  "config_version": "1.0.0",
+  "sprint": "48 (supersedes Sprint 47 exploration)",
+  "frozen_by": "CHANGE_ME",
+  "baseline": {
+    "model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "main"
+  },
+  "candidate": {
+    "model_id": "zai-org/GLM-4-9B-0414",
+    "revision": "main"
+  },
+  "quantization": {
+    "method": "bnb-nf4",
+    "bits": 4,
+    "double_quant": true,
+    "note": "ONE method, both models, entire eval"
+  },
+  "generation": {
+    "do_sample": false,
+    "max_new_tokens": 256,
+    "batch_size": 4,
+    "padding_side": "left",
+    "seed": 42
+  },
+  "data": {
+    "dataset": "FLORES-200 devtest (Meta public tarball)",
+    "n_sentences": 200,
+    "directions": [
+      [
+        "eng_Latn",
+        "yue_Hant"
+      ],
+      [
+        "eng_Latn",
+        "zho_Hans"
+      ],
+      [
+        "yue_Hant",
+        "eng_Latn"
+      ],
+      [
+        "zho_Hans",
+        "eng_Latn"
+      ]
+    ]
+  },
+  "metrics": {
+    "primary": "sacrebleu chrF2 (always runs)",
+    "secondary": "COMET-22 Unbabel/wmt22-comet-da (optional, sandboxed)"
+  },
+  "human_review": {
+    "n_per_pair": 100,
+    "sampling_seed": 7,
+    "pairs": [
+      "eng_Latn->yue_Hant",
+      "eng_Latn->zho_Hans"
+    ]
+  },
+  "prompt_template": "Translate the following English sentence into Cantonese (written vernacular Cantonese, 粵語白話文, Traditional characters). Output ONLY the translation, with no explanation, no romanization, and no quotation marks. The translation must be natural written vernacular Cantonese as used in Hong Kong (using words like 嘅、喺、唔、佢 where natural), NOT Standard Written Chinese.\n\nEnglish: {source}\nCantonese (written vernacular Cantonese, 粵語白話文, Traditional characters):"
+}
