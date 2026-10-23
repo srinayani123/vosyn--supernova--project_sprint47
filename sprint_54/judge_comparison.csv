@@ -1,0 +1,7 @@
+fault,glm4-9b,qwen2.5-7b,qwen3-8b
+untranslated,0.0,0.0,1.7
+negation,9.1,11.4,6.8
+entity,10.5,28.9,18.4
+clause,27.5,7.5,30.0
+truncation,67.2,31.0,86.2
+control,100.0,100.0,100.0
